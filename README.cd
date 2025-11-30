@@ -1,0 +1,146 @@
+-----------------------------------------------------------------------------------------------------|
+C Source Code to HTML Converter
+
+Project Overview
+
+The C Source Code to HTML Converter is a robust program written in C that transforms C source files into syntax-highlighted HTML pages. This tool uses a state-based lexical analysis approach to identify different tokens in the source code and generate an HTML file that visually distinguishes elements such as keywords, constants, comments, strings, and preprocessor directives using color coding.
+
+This project is ideal for developers, students, or educators who want to visualize C source code in a web-friendly format for code review, documentation, or presentation purposes.
+
+-----------------------------------------------------------------------------------------------------|
+
+Features
+
+1. File Handling
+
+Opens C source files for reading.
+
+Creates a destination HTML file automatically, derived from the source filename.
+
+Provides informative messages for file opening success or failure.
+
+Handles memory allocation issues for output file names gracefully.
+
+-----------------------------------------------------------------------------------------------------|
+
+2. Token Detection & State Machine
+
+The converter uses a state machine to identify tokens in the source code. The states include:
+
+IDEAL → Default state.
+
+PREPROCESSOR → For preprocessor directives (#include, #define, etc.).
+
+KEYWORD → C keywords and control flow statements.
+
+SINGLELINE → Single-line comments (//).
+
+MULTILINE → Multi-line comments (/* */).
+
+STRING → String literals ("...").
+
+NUMBERCONSTANT → Integer, float, hexadecimal, octal, and binary constants.
+
+CHARACTERCONSTANT → Character literals ('c').
+
+REGULAR_CHARACTER → Other characters like operators and symbols.
+
+STATE_EOF → End of file.
+
+-----------------------------------------------------------------------------------------------------|
+
+3. Syntax Highlighting
+
+Applies color-coded spans for enhanced readability.
+
+Predefined colors:
+
+BLUE → Preprocessor directives
+
+GREEN → Declaration keywords (int, char, float, etc.)
+
+YELLOW → Control flow keywords (for, if, while, etc.)
+
+PURPLE → Constants, macros, numeric values
+
+CYAN → Comments
+
+WHEAT → Escaped characters in strings and character constants
+
+END → Regular characters (operators, symbols)
+
+-----------------------------------------------------------------------------------------------------|
+
+4. Macro Detection
+
+Recognizes standard C macros such as:
+
+__FILE__, __LINE__, __DATE__, __TIME__, NULL, EOF, EXIT_SUCCESS, EXIT_FAILURE
+
+-----------------------------------------------------------------------------------------------------|
+
+5. HTML Output Structure
+
+Automatically adds <html>, <head>, and <body> sections.
+
+Includes <pre> tags to preserve original code formatting.
+
+Generates <span> tags with CSS classes for token coloring.
+
+Links to an external colour.css file for styling.
+
+-----------------------------------------------------------------------------------------------------|
+
+Usage
+
+Compilation
+
+gcc main.c token.c html.c -o source2html
+
+Running the Program
+
+./source2html <filename>.c
+
+-----------------------------------------------------------------------------------------------------|
+
+<filename>.c → Path to the C source code file you want to convert.
+
+The program will create a <filename>.html file in the same directory.
+
+Open the .html file in any browser to view syntax-highlighted code.
+
+-----------------------------------------------------------------------------------------------------|
+
+File Structure
+
+File	Description
+
+main.c	Main control, file handling, and overall process.
+
+token.c	Token detection and processing using state machine.
+
+html.c	HTML head and tail generation, CSS linking.
+
+html.h	Header file containing enums, structs, macros, and function prototypes.
+
+colour.css	CSS file defining color classes for syntax highlighting.
+
+-----------------------------------------------------------------------------------------------------|
+
+Example Output
+
+The generated HTML will preserve original code formatting and apply color coding to each token type.
+
+Keywords: Green
+
+Control Flow: Yellow
+
+Preprocessor: Blue
+
+Comments: Cyan
+
+Strings & Constants: Purple
+
+Escaped Characters: Wheat
+
+-----------------------------------------------------------------------------------------------------|
