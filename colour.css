@@ -1,0 +1,30 @@
+/* css File for Setting Colour for Background & Token */
+
+body {
+        background-color: black;
+        color: white;
+     }
+
+.b {
+        color: deepskyblue;
+   }
+
+.p {
+        color: MediumVioletRed;
+   }
+
+.g {
+        color: SpringGreen;
+   }
+
+.y {
+        color: Gold;
+   }
+
+.w {
+        color: Aqua;
+   }
+
+.c {
+        color: darkturquoise;
+   }
